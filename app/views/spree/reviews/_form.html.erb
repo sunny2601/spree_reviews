@@ -1,4 +1,3 @@
-<form class="form-horizontal" role="form">
 <%= form_for review, :url => product_reviews_path(product), :html => {:method => :post} do |f| %>
   <%= render "spree/shared/error_messages", :target => review %>
 
@@ -46,4 +45,3 @@
     </div>
   </div>  
 <% end %>
-</form>
