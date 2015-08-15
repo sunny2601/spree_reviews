@@ -1,47 +1,49 @@
-<%= form_for review, :url => product_reviews_path(product), :html => {:method => :post} do |f| %>
-  <%= render "spree/shared/error_messages", :target => review %>
+<div class="form-horizontal">
+  <%= form_for review, :url => product_reviews_path(product), :html => {:method => :post} do |f| %>
+    <%= render "spree/shared/error_messages", :target => review %>
 
-  <div class="form-group">
-    <%= f.label 'Your Rating', :class=>"control-label col-sm-2" %>
-      <div class="col-sm-10">
-        <%= render "spree/reviews/stars", :stars => review.rating, :edit_enabled => true %>
-      </div>
-  </div>      
+    <div class="form-group">
+      <%= f.label 'Your Rating', :class=>"control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= render "spree/reviews/stars", :stars => review.rating, :edit_enabled => true %>
+        </div>
+    </div>      
 
-  <div class="form-group">
-    <%= f.label 'Review Title:', :class=>"control-label col-sm-2" %>
-      <div class="col-sm-10">
-        <%= f.text_field :name, :maxlength => "255", :size => "50", :class=> "form-control frm", :placeholder=>"Your title" %>
-        <div>(3 - 100 characters)</div>
-      </div>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label 'Your Review:', :class=>"control-label col-sm-2" %>
-    <div class="col-sm-10">
-      <%= f.text_area :review, :class=>"form-control frm", :rows=>"5", :placeholder=>"Your review" %>
-      <div>If you were not happy with the seller or service do contact us for quick resolution.</div>
+    <div class="form-group">
+      <%= f.label 'Review Title:', :class=>"control-label col-sm-2" %>
+        <div class="col-sm-10">
+          <%= f.text_field :name, :maxlength => "255", :size => "50", :class=> "form-control frm", :placeholder=>"Your title" %>
+          <div>(3 - 100 characters)</div>
+        </div>
     </div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label 'Content', :class=>"control-label col-sm-2" %>
-    <div class="col-sm-10">
-      <%= f.text_field :title, :maxlength => "255", :size => "50",:class=>"form-control frm" %>
-      <div>(Max 40 characters)</div>
+    
+    <div class="form-group">
+      <%= f.label 'Your Review:', :class=>"control-label col-sm-2" %>
+      <div class="col-sm-10">
+        <%= f.text_area :review, :class=>"form-control frm", :rows=>"5", :placeholder=>"Your review" %>
+        <div>If you were not happy with the seller or service do contact us for quick resolution.</div>
+      </div>
     </div>
-  </div>
 
-  <% if Spree::Reviews::Config[:render_show_identifier_checkbox] %>
-    <p class="review_show_identifier_field">
-      <%= f.label :show_identifier %><br />
-      <%= f.check_box :show_identifier, :wrap => "virtual", :rows => "10", :cols => "50", :checked => true %>
-    </p>
+    <div class="form-group">
+      <%= f.label 'Content', :class=>"control-label col-sm-2" %>
+      <div class="col-sm-10">
+        <%= f.text_field :title, :maxlength => "255", :size => "50",:class=>"form-control frm" %>
+        <div>(Max 40 characters)</div>
+      </div>
+    </div>
+
+    <% if Spree::Reviews::Config[:render_show_identifier_checkbox] %>
+      <p class="review_show_identifier_field">
+        <%= f.label :show_identifier %><br />
+        <%= f.check_box :show_identifier, :wrap => "virtual", :rows => "10", :cols => "50", :checked => true %>
+      </p>
+    <% end %>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit Spree.t(:submit_your_review), :class => "btn btn-info btn-sm pull-left btn-signin" %>
+      </div>
+    </div>  
   <% end %>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit Spree.t(:submit_your_review), :class => "btn btn-info btn-sm pull-left btn-signin" %>
-    </div>
-  </div>  
-<% end %>
+</div>
